@@ -1,4 +1,4 @@
-# Mix-AI
+# Mix-AI (IN DEVELOPMENT)
 
 # Full-Stack Laravel & Python (AI/API) Project
 <h2>Overview</h2>
