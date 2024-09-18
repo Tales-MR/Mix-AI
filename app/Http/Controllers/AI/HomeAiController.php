@@ -15,8 +15,8 @@ class HomeAiController extends Controller {
     }
 
 
-    public function teste(Request $request) {
-        $result = Http::get("http://127.0.0.1:5000/teste-api");
+    public function getAi(Request $request) {
+        $result = Http::get("http://127.0.0.1:5000/ai");
 
         $result = $result->json();
 
@@ -27,4 +27,14 @@ class HomeAiController extends Controller {
     }
 
 
+    public function trainAi() {
+    
+        return Inertia::render("AI/Train-AI");
+    }
+
+
+    public function manageAis() {
+        return Inertia::render("AI/Manage-AI");
+    }
+    
 }
