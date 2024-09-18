@@ -32,9 +32,16 @@ class HomeAiController extends Controller {
         return Inertia::render("AI/Train-AI");
     }
 
+    
 
     public function manageAis() {
-        return Inertia::render("AI/Manage-AI");
+        $result = Http::get("http://127.0.0.1:5000/get-all-ais");
+
+        $result = $result->json();
+
+        return Inertia::render("AI/Manage-AI", [
+            "data" => $result
+        ]);
     }
     
 }
