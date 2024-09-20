@@ -1,9 +1,39 @@
 <?php
 
+use App\Http\Controllers\AI\HomeAiController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+
+require("routes/hash/web.php");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -14,14 +44,22 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+Route::get('/home', function () {
+    return Inertia::render('Home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    
+    Route::get("/manage-ai/{id?}", [HomeAiController::class, "trainAi"])->name("train.ai");
+
+
+
+    Route::get("/manage-ais", [HomeAiController::class, "manageAis"])->name("manage.ais");
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
