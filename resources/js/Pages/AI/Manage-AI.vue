@@ -19,9 +19,13 @@ import axios from 'axios';
 <script>
 export default {
   props: {
-    data: {
-      type: Array,
+    data_ai: {
+      type: Object,
       required: true
+    },
+    data_node: {
+        type: Object,
+        required: true
     }
   }
 };
@@ -35,7 +39,10 @@ export default {
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Home</h2>
+            <h3>{{ data_node?.message }}</h3>
         </template>
+
+        
 
         <div class="py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -47,7 +54,7 @@ export default {
 
 
         <div class="py-4">
-            <div class="py-2 max-w-7xl mx-auto sm:px-6 lg:px-8" v-for="ai in data"> 
+            <div class="py-2 max-w-7xl mx-auto sm:px-6 lg:px-8" v-for="ai in data_ai"> 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-5">
                     <h1>{{ ai?.name }}</h1>
                 </div>
